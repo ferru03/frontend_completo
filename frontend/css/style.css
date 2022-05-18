@@ -1,0 +1,51 @@
+.table td,
+.table th{
+    text-align: center;
+}
+
+.cursor-point{
+    cursor: pointer;
+}
+
+.spin:focus{
+    animation: spin 500ms ease-out 150ms;
+}
+
+@keyframes spin {
+    0%{
+      transform: rotate(0deg);
+    }
+    100%{
+      transform: rotate(360deg);
+    }
+}
+
+.levitate{
+  position: relative;
+  transition: 300ms ease-out;
+}
+
+.levitate:active{
+  transform: translate3d(0, -0.5em, 0);
+}
+
+.levitate::before{
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 75%;
+  left: -17.5%;
+  width: 135%;
+  height: 30%;
+  background-color: black;
+  filter: blur(0em);
+  transition: 300ms ease-out;
+  opacity: 0%;
+  transform: perspective(3em) rotateX(10deg) translate3d(0em, 0em, -1em);
+}
+
+.levitate:active::before{
+  opacity: 100%;
+  filter: blur(0.5em);
+  transform: perspective(3em) rotateX(10deg) translate3d(0em, 0.75em, -1em);
+}
